@@ -5,40 +5,52 @@
 <style>
 @font-face { font-family: "Fraunces"; font-weight: 300 700; font-display: swap; src: url("fonts/Fraunces.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 300 700; font-display: swap; src: url("fonts/Inter.woff2") format("woff2"); }
-:root { --bleu: #356bac; --vert: #6c9e23; --orange: #fd7e14; --encre: #1d2430; --doux: #5f6672; }
+:root { --bleu: #356bac; --vert: #6c9e23; --orange: #fd7e14; --encre: #1d2430; --doux: #5f6672; --rose: #cc2a62; }
 * { box-sizing: border-box; }
 body { margin: 0; background: #f4f6f9; color: var(--encre); font-family: "Inter", system-ui, sans-serif; line-height: 1.6; }
 
-/* Bandeau bleu du LAB, texte centré (essai A choisi par Manon) */
-header { background: var(--bleu); color: #fff; text-align: center; }
-.tete { max-width: 52em; margin: 0 auto; padding: 3.6em 1.5em 5.6em; }
-.sur { display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.85; }
-h1 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1.1; margin: 0.3em 0 0.5em; }
-.tete p { margin: 0 auto 0.7em; max-width: 46em; font-size: 1.05rem; opacity: 0.92; }
+/* Bandeau blanc gravé : branche de cerisier et arbre-bibliothèque, motifs des couvertures en bois */
+html { background: #fff; } body { background: var(--bleu); }
+header { position: relative; overflow: hidden; text-align: center; background: #fff; border-bottom: 6px solid;
+  border-image: linear-gradient(90deg, var(--vert) 0 33.3%, var(--orange) 33.3% 66.6%, var(--rose) 66.6%) 1; }
+.deco { position: absolute; pointer-events: none; }
+.branche { width: 210px; top: -8px; left: -40px; }
+.arbre { height: 150px; right: 10px; top: -6px; }
+.tete { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 2.6em 1.5em 5.4em; }
+.sur { display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
+h1 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.1; margin: 0.3em 0 0.5em; }
+.tete p { margin: 0 auto; font-size: 1rem; color: #3a4250; }
 
 /* Les livres sur des cartes blanches qui débordent sur le bandeau ; pastille de la bibliothèque */
-.g { max-width: 1120px; margin: -3em auto 0; padding: 0 1.5em 3.5em; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.6em; }
+.g { position: relative; z-index: 2; max-width: 1120px; margin: -3em auto 0; padding: 0 1.5em 3.5em; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.6em; }
 .livre { display: block; color: inherit; text-decoration: none; background: #fff; border-radius: 10px; overflow: hidden; padding-bottom: 1em;
-  box-shadow: 0 8px 22px -12px rgba(0, 0, 0, 0.4); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+  box-shadow: 0 10px 26px -10px rgba(20, 30, 45, 0.45); transition: transform 0.18s ease, box-shadow 0.18s ease; }
 .livre:hover, .livre:focus-visible { transform: translateY(-4px); box-shadow: 0 14px 28px -12px rgba(0, 0, 0, 0.45); }
 .livre img { display: block; width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
 .t { display: block; font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.1rem; line-height: 1.25; margin: 0.8em 1em 0; }
 .n { display: block; color: var(--doux); font-size: 0.9rem; margin: 0.1em 1em 0; }
 .p { display: inline-block; margin: 0.7em 1em 0; font-size: 0.75rem; font-weight: 600; color: #fff; padding: 0.15em 0.75em; border-radius: 2em; }
 .p.vert { background: var(--vert); } .p.orange { background: var(--orange); }
-footer { max-width: 46em; margin: 0 auto; padding: 0.5em 1.5em 2.8em; font-size: 0.95rem; color: var(--doux); text-align: center; }
-footer p { margin: 0 0 0.8em; }
-footer .origine { font-weight: 600; color: var(--encre); }
-footer .credits { font-size: 0.85rem; margin-top: 1.4em; }
+footer { background: #fff; padding: 2.4em 1.5em 2.6em; font-size: 0.92rem; color: var(--doux); text-align: center; }
+footer > * { max-width: calc(1120px - 3em); margin-left: auto; margin-right: auto; }
+footer p { margin: 0 auto 1em; } footer .origine { color: var(--encre); font-family: "Fraunces", Georgia, serif; font-size: 1.08rem; font-weight: 600; font-style: italic; } footer .titre-pied { font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; font-weight: 600; color: var(--encre); margin-bottom: 0.7em; } footer .credits { font-size: 0.82rem; margin-top: 1.4em; }
+@media (max-width: 1150px) { .deco { opacity: 0.3; } }
+@media (max-width: 700px) { .deco { display: none; } }
 @media (max-width: 820px) {
   .tete { padding: 2.4em 1.2em 4.6em; }
   .g { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1em; padding: 0 1.2em 2.5em; }
 }
 </style></head><body>
-<header><div class="tete">
+<header><img class="deco branche" src="images/deco_branche_cerisier.png" alt=""><img class="deco arbre" src="images/deco_arbre_bibliotheque.png" alt=""><div class="tete">
 <span class="sur">Bibliothèques Méjanes · L.A.B</span><h1>La quête du curry</h1>
-<p>En octobre 2026, le L.A.B a animé l’atelier «&nbsp;La quête du curry, une histoire dont tu es le héros&nbsp;» dans les bibliothèques Méjanes d’Aix-en-Provence. Les enfants y ont inventé leurs personnages, construit leur intrigue et imaginé les embranchements de leur récit, explorant ainsi, sans écran, la pensée computationnelle.</p><p>Voici les huit livres nés de leurs récits, mis en forme et illustrés par le L.A.B. Chacun se lit en ligne&nbsp;: il suffit de choisir une couverture, puis de suivre son chemin au fil des lancers de dé.</p>
+<p>En octobre 2026, le L.A.B a animé l’atelier «&nbsp;La quête du curry, une histoire dont tu es le héros&nbsp;» dans les bibliothèques Méjanes d’Aix-en-Provence. Les enfants y ont inventé leurs personnages, construit leur intrigue et imaginé les embranchements de leur récit, explorant ainsi, sans écran, la pensée computationnelle. Leurs histoires sont réunies ici&nbsp;: choisissez un livre, puis votre chemin, et laissez-vous guider par le hasard du dé.</p>
 </div></header>
-<main class="g"><a class="livre" href="https://labaixbidouille.github.io/la-lune-de-rambo/"><img src="images/LaLunedeRambo.jpg" alt="Couverture de La Lune de Rambo" loading="lazy"><span class="t">La Lune de Rambo</span><span class="n">Mei</span><span class="p vert">Deux Ormes</span></a><a class="livre" href="https://labaixbidouille.github.io/violette-et-patate/"><img src="images/VioletteEtPatate.jpg" alt="Couverture de Violette et Patate" loading="lazy"><span class="t">Violette et Patate</span><span class="n">Eva et Brune</span><span class="p vert">Deux Ormes</span></a><a class="livre" href="https://labaixbidouille.github.io/le-voleur-de-diamants/"><img src="images/LeVoleurDeDiamants.jpg" alt="Couverture de Le voleur de diamants" loading="lazy"><span class="t">Le voleur de diamants</span><span class="n">Nina</span><span class="p vert">Deux Ormes</span></a><a class="livre" href="https://labaixbidouille.github.io/le-fermier-au-chapeau-de-paille/"><img src="images/LeFermierAuChapeauDePaille.jpg" alt="Couverture de Le fermier au chapeau de paille" loading="lazy"><span class="t">Le fermier au chapeau de paille</span><span class="n">Antoine et Émile</span><span class="p vert">Deux Ormes</span></a><a class="livre" href="https://labaixbidouille.github.io/les-trois-soeurs/"><img src="images/LesTroisSoeurs.jpg" alt="Couverture de Les trois sœurs" loading="lazy"><span class="t">Les trois sœurs</span><span class="n">Agathe, Aliya et Teresa</span><span class="p orange">Li Campaneto</span></a><a class="livre" href="https://labaixbidouille.github.io/ile-aux-dragons/"><img src="images/IleAuxDragons.jpg" alt="Couverture de L’île aux dragons" loading="lazy"><span class="t">L’île aux dragons</span><span class="n">Louisa et June</span><span class="p orange">Li Campaneto</span></a><a class="livre" href="https://labaixbidouille.github.io/deux-freres-une-coupe/"><img src="images/DeuxFreresUneCoupe.jpg" alt="Couverture de Deux frères, une coupe" loading="lazy"><span class="t">Deux frères, une coupe</span><span class="n">Aylan et Adam</span><span class="p orange">Li Campaneto</span></a><a class="livre" href="https://labaixbidouille.github.io/le-real-de-lego-city/"><img src="images/LeRealDeLegoCity.jpg" alt="Couverture de Le Real de Lego City" loading="lazy"><span class="t">Le Real de Lego City</span><span class="n">Ernest et Abel</span><span class="p orange">Li Campaneto</span></a></main>
-<footer><p>L’atelier ne durant que deux heures, nous tenions à offrir à chaque enfant un livre complet pour illustrer leur travail et les rendre fiers de leurs productions. Le L.A.B a donc prolongé et mis en forme leur récit à l’aide d’outils numériques (l’intelligence artificielle a notamment permis d’aboutir à une histoire achevée et à un ensemble de visuels correspondant à leurs descriptions mais uniformes tout au long de la lecture).</p><p class="origine">À son origine, il y a avant tout les idées, les personnages et les dessins des enfants.</p><p class="credits">Réalisation des livres&nbsp;: Laboratoire d’Aix-périmentation et de Bidouille, avec les bibliothèques Méjanes d’Aix-en-Provence.</p></footer>
+<main class="g"><a class="livre" href="https://labaixbidouille.github.io/la-lune-de-rambo/"><img src="images/LaLunedeRambo.jpg" alt="Couverture de La Lune de Rambo" loading="lazy"><span class="t">La Lune de Rambo</span><span class="n">Mei</span><span class="p vert">Deux Ormes</span></a><a class="livre" href="https://labaixbidouille.github.io/le-voleur-de-diamants/"><img src="images/LeVoleurDeDiamants.jpg" alt="Couverture de Le voleur de diamants" loading="lazy"><span class="t">Le voleur de diamants</span><span class="n">Nina</span><span class="p vert">Deux Ormes</span></a><a class="livre" href="https://labaixbidouille.github.io/violette-et-patate/"><img src="images/VioletteEtPatate.jpg" alt="Couverture de Violette et Patate" loading="lazy"><span class="t">Violette et Patate</span><span class="n">Eva et Brune</span><span class="p vert">Deux Ormes</span></a><a class="livre" href="https://labaixbidouille.github.io/le-fermier-au-chapeau-de-paille/"><img src="images/LeFermierAuChapeauDePaille.jpg" alt="Couverture de Le fermier au chapeau de paille" loading="lazy"><span class="t">Le fermier au chapeau de paille</span><span class="n">Antoine et Émile</span><span class="p vert">Deux Ormes</span></a><a class="livre" href="https://labaixbidouille.github.io/les-trois-soeurs/"><img src="images/LesTroisSoeurs.jpg" alt="Couverture de Les trois sœurs" loading="lazy"><span class="t">Les trois sœurs</span><span class="n">Agathe, Aliya et Teresa</span><span class="p orange">Li Campaneto</span></a><a class="livre" href="https://labaixbidouille.github.io/deux-freres-une-coupe/"><img src="images/DeuxFreresUneCoupe.jpg" alt="Couverture de Deux frères, une coupe" loading="lazy"><span class="t">Deux frères, une coupe</span><span class="n">Aylan et Adam</span><span class="p orange">Li Campaneto</span></a><a class="livre" href="https://labaixbidouille.github.io/ile-aux-dragons/"><img src="images/IleAuxDragons.jpg" alt="Couverture de L’île aux dragons" loading="lazy"><span class="t">L’île aux dragons</span><span class="n">Louisa et June</span><span class="p orange">Li Campaneto</span></a><a class="livre" href="https://labaixbidouille.github.io/le-real-de-lego-city/"><img src="images/LeRealDeLegoCity.jpg" alt="Couverture de Le Real de Lego City" loading="lazy"><span class="t">Le Real de Lego City</span><span class="n">Ernest et Abel</span><span class="p orange">Li Campaneto</span></a></main>
+<footer>
+<p class="titre-pied">Comment ces livres ont été réalisés</p>
+<p>Chaque livre part des fiches remplies par les enfants pendant l’atelier&nbsp;: leurs personnages, la trame de leur récit, les situations à embranchements et leurs dessins. Le L.A.B a ensuite reconstitué l’arbre de chaque histoire, complété les chemins restés ouverts et relié les passages entre eux, en restant au plus près de leurs idées et en gardant leurs mots chaque fois que possible.</p>
+<p>Il nous tenait à cœur que chaque enfant puisse être fier de son travail et le tenir entre ses mains, sous la forme d’un vrai livre. Nous avons donc pris le temps de retravailler chaque texte à partir de leurs idées. Pour compléter ce travail, les illustrations ont été réalisées sur la base des dessins des enfants, avec des outils de génération d’images basés sur l’intelligence artificielle, afin de rester fidèles à leurs descriptions et cohérentes tout au long de la lecture. Leurs fiches et leurs dessins originaux restent consultables dans chaque livre, sur la page «&nbsp;Comment est née cette histoire&nbsp;». Chaque livre se lit en ligne, et un exemplaire imprimé, avec une couverture en bois, est en cours de fabrication au fablab pour chaque enfant.</p>
+<p class="origine">À leur origine, il y a avant tout les idées, les personnages et les dessins des enfants.</p>
+<p class="credits">Réalisation des livres : Laboratoire d’Aix-périmentation et de Bidouille, avec les bibliothèques Méjanes d’Aix-en-Provence.</p>
+</footer>
 </body></html>
