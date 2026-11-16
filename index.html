@@ -15,7 +15,8 @@ header { position: relative; overflow: hidden; text-align: center; background: #
   border-image: linear-gradient(90deg, var(--vert) 0 33.3%, var(--orange) 33.3% 66.6%, var(--rose) 66.6%) 1; }
 .deco { position: absolute; pointer-events: none; }
 .branche { width: 210px; top: -8px; left: -40px; }
-.arbre { height: 150px; right: 10px; top: -6px; }
+/* Arbre posé sur le liseré, à la taille de la marge à droite du texte */
+.arbre { height: clamp(110px, calc((100vw - 1100px) * 0.75), 260px); right: 4px; bottom: 0; }
 .tete { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 2.6em 1.5em 5.4em; }
 .sur { display: block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); }
 h1 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.1; margin: 0.3em 0 0.5em; }
@@ -34,6 +35,7 @@ h1 { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: clamp
 footer { background: #fff; padding: 2.4em 1.5em 2.6em; font-size: 0.92rem; color: var(--doux); text-align: center; }
 footer > * { max-width: calc(1120px - 3em); margin-left: auto; margin-right: auto; }
 footer p { margin: 0 auto 1em; } footer .origine { color: var(--encre); font-family: "Fraunces", Georgia, serif; font-size: 1.08rem; font-weight: 600; font-style: italic; } footer .titre-pied { font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; font-weight: 600; color: var(--encre); margin-bottom: 0.7em; } footer .credits { font-size: 0.82rem; margin-top: 1.4em; }
+@media (max-width: 1240px) { .arbre { opacity: 0.3; } }
 @media (max-width: 1150px) { .deco { opacity: 0.3; } }
 @media (max-width: 700px) { .deco { display: none; } }
 @media (max-width: 820px) {
